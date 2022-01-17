@@ -48,9 +48,54 @@ class _BottomTabState extends State<BottomTab> {
   int _selectedIndex = 0;
 
   void _onTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if(index == 2){
+      showModalBottomSheet<void>(
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            padding: const EdgeInsets.only(top:15, right: 10, left: 10, bottom: 10),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+            ),
+            height: 300,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text('Create', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, ),),
+                          IconButton(onPressed: (){}, icon: Icon(Icons.close)),
+                        ],
+                      ),
+                    ),
+                  //const SizedBox(height: 20,),
+                  ListTile(
+                    enableFeedback: true,
+                    leading: CircleAvatar(
+                      backgroundColor: Colors.grey[100],
+                      radius: 30,
+                      child: Center(child: Icon(Icons.ondemand_video_sharp, color: Colors.black,),),
+                    ),
+                    title: const Text('Create a Short', style: TextStyle(fontSize: 18)),
+                  )
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    }else{
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
+
   }
 
   static const List<Widget> pages = <Widget>[
@@ -63,7 +108,7 @@ class _BottomTabState extends State<BottomTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages.elementAt(_selectedIndex),
+      body: SafeArea(child: pages.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onTapped,
         currentIndex: _selectedIndex,

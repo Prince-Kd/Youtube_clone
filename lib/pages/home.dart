@@ -2,12 +2,29 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/icons.dart';
+import 'package:youtube_clone/widgets/custom_widgets.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<String> texts = [
+      'All',
+      'NBA',
+      'Angular',
+      'Computer programming',
+      'Smartphones',
+      'Trailers',
+      'Linux',
+      'Calculus',
+      'Marvel Cinematic Universe',
+      'Anime',
+      'Sketch comedy',
+      'Balls'
+    ];
+
+    List<Widget> chips = texts.map((text) => CustomChips(text: text,)).toList();
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -53,7 +70,7 @@ class Home extends StatelessWidget {
                           style: TextButton.styleFrom(
                             primary: Colors.grey[200],
                             backgroundColor: Colors.grey[100],
-                            padding: EdgeInsets.only(left: 5, right: 15),
+                            padding: const EdgeInsets.only(left: 5, right: 15),
 
                           ),
                           onPressed: (){}, child: Row(
@@ -62,7 +79,11 @@ class Home extends StatelessWidget {
                           SizedBox(width: 8,),
                           Text('Explore', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),)
                         ],
-                      ))
+                      )),
+                      const SizedBox(width: 8,),
+                      VerticalDivider(color: Colors.grey[400]),
+                      const SizedBox(width: 8,),
+                      ...chips,
                     ],
                   ),
                 ),
