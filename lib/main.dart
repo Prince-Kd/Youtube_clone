@@ -110,6 +110,7 @@ class _BottomTabState extends State<BottomTab> {
     return Scaffold(
       body: SafeArea(child: pages.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         onTap: _onTapped,
         currentIndex: _selectedIndex,
         items: const [

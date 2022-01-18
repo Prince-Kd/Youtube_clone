@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/icons.dart';
 import 'package:youtube_clone/widgets/custom_widgets.dart';
+import 'package:youtube_clone/widgets/header_bottom.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
+  bool? bottom;
+  Header({Key? key, this.bottom}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,45 +47,13 @@ class Header extends StatelessWidget {
           ),
           const SizedBox(width: 18,),
         ],
-        bottom: PreferredSize(
-          child: Container(
-            decoration: BoxDecoration(
-                border: Border(
-                  top: BorderSide(color: Colors.grey[200]!, width: 1),
-                  bottom: BorderSide(color: Colors.grey[200]!, width: 1),
-                )
-            ),
-            height: 50,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 8.0, bottom: 8, left: 15),
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                primary: false,
-                children: [
-                  TextButton(
-                      style: TextButton.styleFrom(
-                        primary: Colors.grey[200],
-                        backgroundColor: Colors.grey[100],
-                        padding: const EdgeInsets.only(left: 5, right: 15),
-
-                      ),
-                      onPressed: (){}, child: Row(
-                    children: const [
-                      Icon(MyFlutterApp.compass, color: Colors.black,),
-                      SizedBox(width: 8,),
-                      Text('Explore', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),)
-                    ],
-                  )),
-                  const SizedBox(width: 8,),
-                  VerticalDivider(color: Colors.grey[400]),
-                  const SizedBox(width: 8,),
-                  ...chips,
-                ],
-              ),
-            ),
-          ),
+        bottom: bottom == true ? PreferredSize(
+          child: HeaderBottom(chips: chips),
           preferredSize: const Size(double.infinity, 50),
-        )
+        ): (const PreferredSize(
+          child: SizedBox(),
+          preferredSize: Size(double.infinity, 0),
+        ))
     );
   }
 }
