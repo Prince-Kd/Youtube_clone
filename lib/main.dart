@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_clone/icons.dart';
 import 'package:youtube_clone/pages/create.dart';
 import 'package:youtube_clone/pages/home.dart';
 import 'package:youtube_clone/pages/library.dart';
 import 'package:youtube_clone/pages/shorts.dart';
 import 'package:youtube_clone/pages/subscriptions.dart';
+import 'package:youtube_clone/widgets/tile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,8 +18,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
         theme: ThemeData(
+          listTileTheme: const ListTileThemeData(
+            iconColor: Colors.black
+          ),
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             unselectedIconTheme: IconThemeData(color: Colors.black),
             selectedIconTheme: IconThemeData(color: Colors.black),
@@ -59,7 +63,7 @@ class _BottomTabState extends State<BottomTab> {
               color: Colors.white,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             ),
-            height: 300,
+            height: 310,
             child: Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -70,20 +74,16 @@ class _BottomTabState extends State<BottomTab> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text('Create', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, ),),
-                          IconButton(onPressed: (){}, icon: Icon(Icons.close)),
+                          IconButton(onPressed: (){
+                            Navigator.pop(context);
+                          }, icon: Icon(Icons.close)),
                         ],
                       ),
                     ),
                   //const SizedBox(height: 20,),
-                  ListTile(
-                    enableFeedback: true,
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.grey[100],
-                      radius: 30,
-                      child: Center(child: Icon(Icons.ondemand_video_sharp, color: Colors.black,),),
-                    ),
-                    title: const Text('Create a Short', style: TextStyle(fontSize: 18)),
-                  )
+                  const BottomTile(icon: Icon(Icons.ondemand_video_sharp, color: Colors.black,), text: 'Create a Short',),
+                  const BottomTile(icon: Icon(MyFlutterApp.upload, color: Colors.black,), text: 'Upload a video',),
+                  const BottomTile(icon: Icon(MyFlutterApp.radio_tower,color: Colors.black,), text: 'Go live',),
                 ],
               ),
             ),

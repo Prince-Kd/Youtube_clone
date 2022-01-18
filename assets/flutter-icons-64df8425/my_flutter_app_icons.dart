@@ -16,6 +16,10 @@
 ///         Author:    P.J. Onori
 ///         License:   SIL (http://scripts.sil.org/OFL)
 ///         Homepage:  http://somerandomdude.com/work/iconic/
+/// * Octicons, Copyright (C) 2020 by GitHub Inc.
+///         Author:    GitHub
+///         License:   MIT (http://opensource.org/licenses/mit-license.php)
+///         Homepage:  https://primer.style/octicons/
 /// * Font Awesome 5, Copyright (C) 2016 by Dave Gandy
 ///         Author:    Dave Gandy
 ///         License:   SIL (https://github.com/FortAwesome/Font-Awesome/blob/master/LICENSE.txt)
@@ -30,8 +34,6 @@ class MyFlutterApp {
   static const String? _kFontPkg = null;
 
   static const IconData compass = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData radio_tower = IconData(0xf393, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData facebook_messenger = IconData(0xf39f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData upload = IconData(0xf39f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData radio_tower = IconData(0xf39f, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-
 }
