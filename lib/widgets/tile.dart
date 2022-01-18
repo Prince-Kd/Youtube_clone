@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BottomTile extends StatelessWidget {
-  final Icon? icon;
+  final Widget? icon;
   final String? text;
   const BottomTile({Key? key, this.icon, this.text}) : super(key: key);
 

@@ -18,7 +18,8 @@ class VideoPost extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/vids/${index+1}.jpeg',),
                 radius: 16,
               ),
               const SizedBox(width: 10,),

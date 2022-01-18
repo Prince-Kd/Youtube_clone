@@ -17,6 +17,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    for(int i=1; i<11; i++){
+      precacheImage(AssetImage('assets/vids/$i.jpeg'), context);
+    }
     return MaterialApp(
         theme: ThemeData(
           listTileTheme: const ListTileThemeData(
@@ -82,8 +85,8 @@ class _BottomTabState extends State<BottomTab> {
                     ),
                   //const SizedBox(height: 20,),
                   const BottomTile(icon: Icon(Icons.ondemand_video_sharp, color: Colors.black,), text: 'Create a Short',),
-                  const BottomTile(icon: Icon(MyFlutterApp.upload, color: Colors.black,), text: 'Upload a video',),
-                  const BottomTile(icon: Icon(MyFlutterApp.radio_tower,color: Colors.black,), text: 'Go live',),
+                  BottomTile(icon: Image.asset('assets/upload.png', height: 24, width: 24,), text: 'Upload a video',),
+                  BottomTile(icon: Image.asset('assets/youtube-live.png', height: 24, width: 24,), text: 'Go live',),
                 ],
               ),
             ),
@@ -113,31 +116,26 @@ class _BottomTabState extends State<BottomTab> {
         type: BottomNavigationBarType.fixed,
         onTap: _onTapped,
         currentIndex: _selectedIndex,
-        items: const [
+        items: [
           BottomNavigationBarItem(
             label: '',
-            icon: Icon(
-              Icons.home_outlined,
-            ),
-            activeIcon: Icon(Icons.home_filled),
+            icon: Image.asset('assets/home.png', height: 24, width: 24,),
+            activeIcon: const Icon(Icons.home_filled),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: '',
             icon: Icon(Icons.ondemand_video_outlined),
           ),
           BottomNavigationBarItem(
             label: '',
-            icon: Icon(
-              Icons.add_circle_outline,
-              size: 40,
-            ),
+            icon: Image.asset('assets/add.png', height: 40, width: 40,),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: '',
             icon: Icon(Icons.subscriptions_outlined),
             activeIcon: Icon(Icons.subscriptions),
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             label: '',
             icon: Icon(Icons.video_collection_outlined),
             activeIcon: Icon(Icons.video_collection),

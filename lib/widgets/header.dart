@@ -34,7 +34,7 @@ class Header extends StatelessWidget {
           ],
         ),
         actions: [
-          const Icon(Icons.cast),
+          Image.asset('assets/cast.png', height: 24, width: 24,),
           const SizedBox(width: 20,),
           const Icon(Icons.notifications_none),
           const SizedBox(width: 20,),

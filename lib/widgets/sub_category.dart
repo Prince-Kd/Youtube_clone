@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:youtube_clone/icons.dart';
 
-class HeaderBottom extends StatelessWidget {
-  List<Widget>? chips;
-  HeaderBottom({Key? key, this.chips}) : super(key: key);
+class SubCategory extends StatelessWidget {
+  const SubCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       decoration: BoxDecoration(
           border: Border(
