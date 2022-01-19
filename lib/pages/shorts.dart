@@ -14,7 +14,7 @@ class Shorts extends StatelessWidget {
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.transparent,
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.light,
+        //systemOverlayStyle: SystemUiOverlayStyle.light,
         backgroundColor: Colors.transparent,
         actions: const [
           Icon(Icons.camera_alt_outlined, color: Colors.white,),

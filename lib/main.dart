@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: Hive.box('settings').listenable(),
       builder: (context, Box box, widget) {
-        bool darkMode = box.get('darkMode', defaultValue: true);
+        bool darkMode = box.get('darkMode', defaultValue: false);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
             theme: ThemeData(
@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: AppBarTheme(
                 backgroundColor: darkMode ? Colors.grey[900] : Colors.white,
                 elevation: 0,
-                  //systemOverlayStyle: SystemUiOverlayStyle.dark,
+                  systemOverlayStyle: darkMode ? SystemUiOverlayStyle.light : SystemUiOverlayStyle.dark,
                 iconTheme: IconThemeData(
                   color: darkMode ? Colors.white : Colors.black
                 ),
