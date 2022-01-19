@@ -11,15 +11,17 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          Header(
-            bottom: true,
-          ),
-          SliverList(
-              delegate: SliverChildListDelegate(List.generate(10, (index) => VideoPost(index: index,),)))
-        ],
+    return SafeArea(
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            Header(
+              bottom: true,
+            ),
+            SliverList(
+                delegate: SliverChildListDelegate(List.generate(10, (index) => VideoPost(index: index,),)))
+          ],
+        ),
       ),
     );
   }
