@@ -16,9 +16,10 @@ class SubCategory extends StatelessWidget {
     List<Widget> chips = texts.map((text) => CustomChips(text: text,)).toList();
     return Container(
       decoration: BoxDecoration(
+        color: Colors.transparent,
           border: Border(
-            top: BorderSide(color: Colors.grey[200]!, width: 1),
-            bottom: BorderSide(color: Colors.grey[200]!, width: 1),
+            top: BorderSide(color: Colors.grey[200]!, width: 0.5),
+            bottom: BorderSide(color: Colors.grey[200]!, width: 0.5),
           )
       ),
       height: 50,

@@ -12,8 +12,8 @@ class HeaderBottom extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           border: Border(
-            top: BorderSide(color: Colors.grey[200]!, width: 1),
-            bottom: BorderSide(color: Colors.grey[200]!, width: 1),
+            top: BorderSide(color: Colors.grey[200]!, width: 0.5),
+            bottom: BorderSide(color: Colors.grey[200]!, width: 0.5),
           )
       ),
       height: 50,
@@ -26,7 +26,7 @@ class HeaderBottom extends StatelessWidget {
             TextButton(
                 style: TextButton.styleFrom(
                   primary: Colors.grey[200],
-                  backgroundColor: Colors.grey[100],
+                  backgroundColor: Theme.of(context).cardColor,
                   padding: const EdgeInsets.only(left: 5, right: 15),
 
                 ),
@@ -34,7 +34,7 @@ class HeaderBottom extends StatelessWidget {
               children: [
                 Image.asset('assets/compass.png', height: 24, width: 24,),
                 const SizedBox(width: 8,),
-                const Text('Explore', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),)
+                Text('Explore', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Theme.of(context).textTheme.bodyText1!.color),)
               ],
             )),
             const SizedBox(width: 8,),

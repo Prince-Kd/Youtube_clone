@@ -14,7 +14,7 @@ class Library extends StatelessWidget {
               index: index,
             ));
     return Scaffold(
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           Header(

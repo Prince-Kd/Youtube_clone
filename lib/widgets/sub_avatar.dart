@@ -19,7 +19,7 @@ class SubAvatar extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 12.0, top: 5),
-            child: Text(name, overflow: TextOverflow.ellipsis, style: TextStyle(color: Colors.grey[700], fontSize: 14 ),),
+            child: Text(name, overflow: TextOverflow.ellipsis, style: TextStyle(color: Theme.of(context).textTheme.bodyText1!.color, fontSize: 14 ),),
           )
         ],
       ),

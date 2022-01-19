@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:youtube_clone/icons.dart';
 import 'package:youtube_clone/pages/create.dart';
 import 'package:youtube_clone/pages/home.dart';
@@ -7,7 +9,9 @@ import 'package:youtube_clone/pages/shorts.dart';
 import 'package:youtube_clone/pages/subscriptions.dart';
 import 'package:youtube_clone/widgets/tile.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox('settings');
   runApp(const MyApp());
 }
 
@@ -20,27 +24,50 @@ class MyApp extends StatelessWidget {
     for(int i=1; i<11; i++){
       precacheImage(AssetImage('assets/vids/$i.jpeg'), context);
     }
-    return MaterialApp(
-        theme: ThemeData(
-          listTileTheme: const ListTileThemeData(
-            iconColor: Colors.black
-          ),
-          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-            unselectedIconTheme: IconThemeData(color: Colors.black),
-            selectedIconTheme: IconThemeData(color: Colors.black),
-          ),
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-            elevation: 0,
-            iconTheme: IconThemeData(
-              color: Colors.black
+    return ValueListenableBuilder(
+      valueListenable: Hive.box('settings').listenable(),
+      builder: (context, Box box, widget) {
+        bool darkMode = box.get('darkMode', defaultValue: true);
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+              hintColor: darkMode ? Colors.black : Colors.white,
+              hoverColor: darkMode ? Colors.white : Colors.grey[200],
+              cardColor: darkMode ? Colors.grey[800] : Colors.grey[200],
+              dividerColor: darkMode ? Colors.grey[400] : Colors.grey[700],
+              bottomSheetTheme: BottomSheetThemeData(
+                backgroundColor: darkMode ? Colors.grey[900] : Colors.white,
+              ),
+              iconTheme: IconThemeData(
+                color: darkMode ? Colors.white : Colors.black,
+              ),
+              scaffoldBackgroundColor: darkMode ? Colors.grey[900] : Colors.white,
+              textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: darkMode ? Colors.grey[100] : Colors.black,
+                displayColor: darkMode ? Colors.grey[100] : Colors.black,
+              ),
+              listTileTheme: ListTileThemeData(
+                iconColor: darkMode ? Colors.white : Colors.black
+              ),
+              bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                backgroundColor: darkMode ? Colors.black : Colors.white,
+                unselectedIconTheme: IconThemeData(color: darkMode ? Colors.white : Colors.black),
+                selectedIconTheme: IconThemeData(color: darkMode ? Colors.white :Colors.black),
+              ),
+              appBarTheme: AppBarTheme(
+                backgroundColor: darkMode ? Colors.grey[900] : Colors.white,
+                elevation: 0,
+                iconTheme: IconThemeData(
+                  color: darkMode ? Colors.white : Colors.black
+                ),
+                titleTextStyle: TextStyle(
+                  color: darkMode ? Colors.white : Colors.black
+                )
+              )
             ),
-            titleTextStyle: TextStyle(
-              color: Colors.black
-            )
-          )
-        ),
-        home: BottomTab());
+            home: BottomTab());
+      }
+    );
   }
 }
 
@@ -62,8 +89,8 @@ class _BottomTabState extends State<BottomTab> {
         builder: (BuildContext context) {
           return Container(
             padding: const EdgeInsets.only(top:15, right: 10, left: 10, bottom: 10),
-            decoration: const BoxDecoration(
-              color: Colors.white,
+            decoration: BoxDecoration(
+              color: Theme.of(context).bottomSheetTheme.backgroundColor,
               borderRadius: BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             ),
             height: 310,
@@ -113,7 +140,7 @@ class _BottomTabState extends State<BottomTab> {
     return Scaffold(
       body: SafeArea(child: pages.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.black,
@@ -124,16 +151,17 @@ class _BottomTabState extends State<BottomTab> {
         items: [
           BottomNavigationBarItem(
             label: 'Home',
-            icon: Image.asset('assets/home.png', height: 24, width: 24,),
+            icon: Icon(Icons.home_outlined),
             activeIcon: const Icon(Icons.home_filled),
           ),
           const BottomNavigationBarItem(
             label: 'Shorts',
             icon: Icon(Icons.ondemand_video_outlined),
+            activeIcon: Icon(Icons.ondemand_video)
           ),
           BottomNavigationBarItem(
             label: '',
-            icon: Image.asset('assets/add.png', height: 40, width: 40,),
+            icon: Icon(Icons.add_circle_outline, size: 40,),
           ),
           const BottomNavigationBarItem(
             label: 'Subscriptions',

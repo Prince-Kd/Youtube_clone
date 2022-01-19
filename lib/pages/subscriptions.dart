@@ -12,7 +12,7 @@ class Subscriptions extends StatelessWidget {
     List<Widget> subs = List.generate(10, (index) => SubAvatar(index: index, name: 'Mawuli Prince'));
     List<Widget> posts = List.generate(10, (index) => VideoPost(index: index,),);
     return Scaffold(
-      backgroundColor: Colors.white,
+      //backgroundColor: Colors.white,
       body: CustomScrollView(
         slivers: [
           Header(bottom: false,),
@@ -20,7 +20,6 @@ class Subscriptions extends StatelessWidget {
             Container(
               height: 105,
               padding: const EdgeInsets.only(left: 10, top: 10, bottom: 10),
-              color: Colors.white,
               child: Row(
                 children: [
                   Expanded(
