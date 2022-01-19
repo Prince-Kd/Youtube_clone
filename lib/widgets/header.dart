@@ -10,7 +10,6 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> texts = [
-      'All',
       'NBA',
       'Angular',
       'Computer programming',

@@ -113,17 +113,22 @@ class _BottomTabState extends State<BottomTab> {
     return Scaffold(
       body: SafeArea(child: pages.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
         type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.black,
+        unselectedLabelStyle: const TextStyle(fontSize: 11, color: Colors.black),
+        selectedLabelStyle: const TextStyle(fontSize: 11, color: Colors.black),
         onTap: _onTapped,
         currentIndex: _selectedIndex,
         items: [
           BottomNavigationBarItem(
-            label: '',
+            label: 'Home',
             icon: Image.asset('assets/home.png', height: 24, width: 24,),
             activeIcon: const Icon(Icons.home_filled),
           ),
           const BottomNavigationBarItem(
-            label: '',
+            label: 'Shorts',
             icon: Icon(Icons.ondemand_video_outlined),
           ),
           BottomNavigationBarItem(
@@ -131,12 +136,12 @@ class _BottomTabState extends State<BottomTab> {
             icon: Image.asset('assets/add.png', height: 40, width: 40,),
           ),
           const BottomNavigationBarItem(
-            label: '',
+            label: 'Subscriptions',
             icon: Icon(Icons.subscriptions_outlined),
             activeIcon: Icon(Icons.subscriptions),
           ),
           const BottomNavigationBarItem(
-            label: '',
+            label: 'Library',
             icon: Icon(Icons.video_collection_outlined),
             activeIcon: Icon(Icons.video_collection),
           ),

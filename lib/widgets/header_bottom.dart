@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_clone/icons.dart';
+import 'package:youtube_clone/widgets/custom_widgets.dart';
 
 class HeaderBottom extends StatelessWidget {
   List<Widget>? chips;
@@ -39,6 +40,7 @@ class HeaderBottom extends StatelessWidget {
             const SizedBox(width: 8,),
             VerticalDivider(color: Colors.grey[400]),
             const SizedBox(width: 8,),
+            CustomChips(val: 700, text: 'All',),
             ...chips!,
           ],
         ),

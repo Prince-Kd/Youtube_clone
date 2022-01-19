@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_clone/widgets/custom_widgets.dart';
 
 class SubCategory extends StatelessWidget {
   const SubCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    List<String> texts = [
+      'Today',
+      'Continue watching',
+      'Unwatched',
+      'Live',
+      'Posts',
+    ];
+    List<Widget> chips = texts.map((text) => CustomChips(text: text,)).toList();
     return Container(
       decoration: BoxDecoration(
           border: Border(
@@ -19,24 +28,12 @@ class SubCategory extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           primary: false,
           children: [
-            TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.grey[200],
-                  backgroundColor: Colors.grey[100],
-                  padding: const EdgeInsets.only(left: 5, right: 15),
-
-                ),
-                onPressed: (){}, child: Row(
-              children: [
-                Image.asset('assets/compass.png', height: 24, width: 24,),
-                const SizedBox(width: 8,),
-                const Text('Explore', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16, color: Colors.black),)
-              ],
-            )),
-            const SizedBox(width: 8,),
-            VerticalDivider(color: Colors.grey[400]),
-            const SizedBox(width: 8,),
-            ...chips!,
+            const CustomChips(text: 'All', val: 700,),
+            ...chips,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5),
+              child: Text('SETTINGS', style: TextStyle(color: Colors.blue[700], fontSize: 16, fontWeight: FontWeight.w600),),
+            )
           ],
         ),
       ),

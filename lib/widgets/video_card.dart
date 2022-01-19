@@ -11,6 +11,11 @@ class VideoCard extends StatelessWidget {
       //color: Colors.blue,
       height: 180,
       child: Stack(children: [
+        Image.asset(
+          'assets/vids/${index+1}.jpeg',
+          fit: BoxFit.fitWidth,
+          width: width,
+        ),
         Positioned(
           bottom: 10,
           right: 10,
@@ -21,17 +26,12 @@ class VideoCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5),
                 boxShadow: const [
                   BoxShadow(
-                      color: Colors.black,
+                    color: Colors.black,
                   )
                 ]
             ),
             child: Center(child: Text('9:45', style: TextStyle(color: Colors.white),),),
           ),
-        ),
-        Image.asset(
-          'assets/vids/${index+1}.jpeg',
-          fit: BoxFit.fitWidth,
-          width: width,
         ),
       ]),
     );
