@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:youtube_clone/icons.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
             theme: ThemeData(
               hintColor: darkMode ? Colors.black : Colors.white,
-              hoverColor: darkMode ? Colors.white : Colors.grey[200],
+              hoverColor: darkMode ? Colors.white : Colors.grey[700],
               cardColor: darkMode ? Colors.grey[800] : Colors.grey[200],
               dividerColor: darkMode ? Colors.grey[400] : Colors.grey[700],
               bottomSheetTheme: BottomSheetThemeData(
@@ -50,13 +51,16 @@ class MyApp extends StatelessWidget {
                 iconColor: darkMode ? Colors.white : Colors.black
               ),
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                backgroundColor: darkMode ? Colors.black : Colors.white,
+                backgroundColor: darkMode ? Colors.grey[900] : Colors.white,
+                unselectedItemColor: darkMode ? Colors.white : Colors.black,
+                selectedItemColor: darkMode ? Colors.white : Colors.black,
                 unselectedIconTheme: IconThemeData(color: darkMode ? Colors.white : Colors.black),
                 selectedIconTheme: IconThemeData(color: darkMode ? Colors.white :Colors.black),
               ),
               appBarTheme: AppBarTheme(
                 backgroundColor: darkMode ? Colors.grey[900] : Colors.white,
                 elevation: 0,
+                  //systemOverlayStyle: SystemUiOverlayStyle.dark,
                 iconTheme: IconThemeData(
                   color: darkMode ? Colors.white : Colors.black
                 ),
@@ -138,23 +142,29 @@ class _BottomTabState extends State<BottomTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: pages.elementAt(_selectedIndex)),
+      body: pages.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
-        //backgroundColor: Colors.white,
+        backgroundColor: _selectedIndex == 1 ? Colors.grey[900] : Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.black,
+        unselectedIconTheme: IconThemeData(
+          color: _selectedIndex == 1 ? Colors.white : Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color,
+        ),
+        selectedIconTheme: IconThemeData(
+          color: _selectedIndex == 1 ? Colors.white : Theme.of(context).bottomNavigationBarTheme.selectedIconTheme!.color,
+        ),
+        selectedItemColor: _selectedIndex == 1 ? Colors.white : Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
+        unselectedItemColor: _selectedIndex == 1 ? Colors.white : Theme.of(context).bottomNavigationBarTheme.selectedItemColor,
         unselectedLabelStyle: const TextStyle(fontSize: 11, color: Colors.black),
         selectedLabelStyle: const TextStyle(fontSize: 11, color: Colors.black),
         onTap: _onTapped,
         currentIndex: _selectedIndex,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             label: 'Home',
             icon: Icon(Icons.home_outlined),
-            activeIcon: const Icon(Icons.home_filled),
+            activeIcon: Icon(Icons.home_filled),
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             label: 'Shorts',
             icon: Icon(Icons.ondemand_video_outlined),
             activeIcon: Icon(Icons.ondemand_video)
@@ -163,12 +173,12 @@ class _BottomTabState extends State<BottomTab> {
             label: '',
             icon: Icon(Icons.add_circle_outline, size: 40,),
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             label: 'Subscriptions',
             icon: Icon(Icons.subscriptions_outlined),
             activeIcon: Icon(Icons.subscriptions),
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             label: 'Library',
             icon: Icon(Icons.video_collection_outlined),
             activeIcon: Icon(Icons.video_collection),

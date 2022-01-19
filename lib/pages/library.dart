@@ -47,34 +47,22 @@ class Library extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Column(
                 children: [
-                  LibraryTile(
+                  const LibraryTile(
                       title: 'History',
-                      icon: Image.asset(
-                        'assets/history.png',
-                        height: 30,
-                        width: 30,
-                      )),
+                      icon: Icon(Icons.history, size: 30,)),
                   const SizedBox(
                     height: 5,
                   ),
                   LibraryTile(
                       title: 'Your videos',
-                      icon: Image.asset(
-                        'assets/play_video.png',
-                        height: 30,
-                        width: 30,
-                      )),
+                      icon: Icon(Icons.play_circle_outline, size: 30,)),
                   const SizedBox(
                     height: 5,
                   ),
-                  LibraryTile(
+                  const LibraryTile(
                       title: 'Downloads',
                       subTitle: '2 videos',
-                      icon: Image.asset(
-                        'assets/download.png',
-                        height: 30,
-                        width: 30,
-                      )),
+                      icon: Icon(Icons.file_download_sharp, size: 30,)),
                   const SizedBox(
                     height: 5,
                   ),
@@ -88,14 +76,10 @@ class Library extends StatelessWidget {
                   const SizedBox(
                     height: 5,
                   ),
-                  LibraryTile(
+                  const LibraryTile(
                       title: 'Watch later',
                       subTitle: '14 unwatched videos',
-                      icon: Image.asset(
-                        'assets/watch_later.png',
-                        height: 30,
-                        width: 30,
-                      )),
+                      icon: Icon(Icons.watch_later_outlined, size: 30,)),
                 ],
               ),
             ),
