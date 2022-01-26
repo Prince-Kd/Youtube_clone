@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: Hive.box('settings').listenable(),
       builder: (context, Box box, widget) {
-        bool darkMode = box.get('darkMode', defaultValue: false);
+        bool darkMode = box.get('darkMode', defaultValue: true);
         return MaterialApp(
           debugShowCheckedModeBanner: false,
             theme: ThemeData(
